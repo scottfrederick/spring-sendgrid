@@ -1,0 +1,13 @@
+---
+applications:
+- name: spring-sendgrid
+  memory: 512M
+  instances: 1
+  url: spring-sendgrid.${target-base}
+  path: target/spring-sendgrid.war
+  services:
+    spring-sendgrid:
+      label: sendgrid-dev
+      provider: sendgrid
+      version: n/a
+      plan: free
