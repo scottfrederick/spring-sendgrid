@@ -2,6 +2,7 @@ package org.cloudfoundry.samples.email.services;
 
 import org.apache.log4j.Logger;
 import org.cloudfoundry.runtime.env.CloudEnvironment;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -14,19 +15,22 @@ public class CloudEmailCredentials implements EmailCredentials {
 
     private static Logger logger = Logger.getLogger(CloudEmailCredentials.class);
 
+    @Value("${smtp.host}")
+    private String host;
+
     private Map<String, String> credentials;
 
     public CloudEmailCredentials() {
         CloudEnvironment cloudEnvironment = new CloudEnvironment();
         getSendGridCredentials(cloudEnvironment.getServices());
 
-        logger.info(credentials);
+        logger.info("host=" + host + ", credentials=" + credentials);
     }
 
     @SuppressWarnings("unchecked")
     private void getSendGridCredentials(List<Map<String, Object>> services) {
         for (Map<String, Object> service : services) {
-            if (service.get("name").toString().contains("sendgrid")) {
+            if (service.get("label").toString().contains("sendgrid")) {
                 credentials = (Map<String, String>) service.get("credentials");
             }
         }
@@ -34,7 +38,7 @@ public class CloudEmailCredentials implements EmailCredentials {
 
     @Override
     public String getHost() {
-        return "smtp.sendgrid.net";
+        return host;
     }
 
     @Override
