@@ -4,7 +4,7 @@ applications:
   memory: 512M
   instances: 1
   url: spring-sendgrid.${target-base}
-  path: target/spring-sendgrid.war
+  path: build/libs/spring-sendgrid.war
   services:
     spring-sendgrid:
       label: sendgrid-dev

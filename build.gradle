@@ -1,0 +1,83 @@
+apply plugin: 'java'
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+apply plugin: 'tomcat'
+apply plugin: 'war'
+
+sourceCompatibility = 1.6
+version = '1.0'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Spring Sample Application', 'Implementation-Version': version
+    }
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.8'
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenRepo url: "http://maven.springframework.org/milestone"
+}
+
+dependencies {
+    // Spring
+    compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework:spring-webmvc:${springVersion}"
+
+    // Cloud Foundry runtime
+    compile "org.cloudfoundry:cloudfoundry-runtime:0.8.1"
+
+    // Java Mail
+    compile "javax.mail:javax.mail-api:1.5.0"
+    compile "com.sun.mail:javax.mail:1.5.0"
+
+    // Logging
+    compile 'org.slf4j:slf4j-api:1.7.2'
+    compile 'org.slf4j:slf4j-log4j12:1.7.2'
+
+    // Servlet
+    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+    compile "javax.servlet:jstl:1.2"
+
+    // Testing
+    testCompile 'junit:junit:4.8.2'
+
+    // Tomcat
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+}
+
+war {
+    // omit the version from the war file name
+    version = ""
+}
+
+tomcatRun {
+    outputFile = file('tomcat.log')
+}
