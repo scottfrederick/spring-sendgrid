@@ -38,7 +38,10 @@ public class CloudEmailCredentials implements EmailCredentials {
 
     @Override
     public String getHost() {
-        return host;
+        if (credentials.get("host") != null)
+            return credentials.get("host");
+        else 
+            return host;
     }
 
     @Override
