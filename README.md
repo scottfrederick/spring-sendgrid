@@ -8,7 +8,7 @@ To test the application running on Cloud Foundry:
 * edit the file `src/main/resources/application.properties` and set your SendGrid host (user name and password will be read from the Cloud Foundry environment)
 * `./gradlew assemble`
 * `cf push`
-* browse to `http://spring-sendgrid.<cloud-foundry-domain>/spring-sendgrid`
+* browse to `http://spring-sendgrid.<cloud-foundry-domain>/`
 
 To run the application locally: 
 
