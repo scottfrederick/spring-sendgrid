@@ -11,13 +11,13 @@ public class PropertiesEmailCredentials implements EmailCredentials {
     private static Logger logger = Logger.getLogger(PropertiesEmailCredentials.class);
 
     @Value("${smtp.host}")
-    private String host;
+    protected String host;
 
     @Value("${smtp.user}")
-    private String user;
+    protected String user;
 
     @Value("${smtp.password}")
-    private String password;
+    protected String password;
 
     public PropertiesEmailCredentials() {
         logger.info("host=" + host + ", user=" + user + ", password=" + password);
