@@ -1,23 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    width: 600px;
-    margin: auto;
-}
-
-h1, hr {
-    margin: 0;
-    padding: 0;
 }
 
 input[type=text] {
     width: 300px;
-}
-
-label {
-    margin-right: 20px;
-    font-weight: bold;
-    width: 150px;
-    float: left;
 }
 
 textarea {

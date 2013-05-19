@@ -35,26 +35,38 @@ public class CloudEmailCredentials extends PropertiesEmailCredentials {
 
     @Override
     public String getHost() {
-        if (StringUtils.isEmpty(host)) {
-            return credentials.get("host");
-        } else {
+        if (!StringUtils.isEmpty(host)) {
             return host;
+        } else {
+            return credentialsOrEmptyString("host");
         }
     }
 
     @Override
     public String getUserName() {
-        if (StringUtils.isEmpty(user))
-            return credentials.get("username");
-        else
+        if (!StringUtils.isEmpty(user)) {
             return user;
+        } else {
+            return credentialsOrEmptyString("username");
+        }
     }
 
     @Override
     public String getPassword() {
-        if (StringUtils.isEmpty(password))
-            return credentials.get("password");
-        else
+        if (!StringUtils.isEmpty(password)) {
             return password;
+        } else {
+            return credentialsOrEmptyString("password");
+        }
+    }
+
+    private String credentialsOrEmptyString(String key) {
+        String value = null;
+
+        if (credentials != null) {
+            value = credentials.get(key);
+        }
+
+        return value == null ? "" : value;
     }
 }

@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class EmailController {
 
-    @Autowired
     private EmailService emailService;
+
+    @Autowired
+    public EmailController(EmailService emailService) {
+        this.emailService = emailService;
+    }
 
     @RequestMapping
     public String form(@ModelAttribute EmailMessage emailMessage) {
