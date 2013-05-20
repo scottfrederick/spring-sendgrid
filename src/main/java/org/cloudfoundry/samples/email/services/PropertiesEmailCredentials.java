@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 public class PropertiesEmailCredentials implements EmailCredentials {
     private static Logger logger = Logger.getLogger(PropertiesEmailCredentials.class);
 
-    @Value("${smtp.host}")
+    @Value("${smtp.host:}")
     protected String host;
 
-    @Value("${smtp.user}")
+    @Value("${smtp.user:}")
     protected String user;
 
-    @Value("${smtp.password}")
+    @Value("${smtp.password:}")
     protected String password;
 
     public PropertiesEmailCredentials() {
