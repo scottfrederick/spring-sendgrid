@@ -5,3 +5,9 @@ applications:
   instances: 1
   url: spring-sendgrid.${target-base}
   path: build/libs/spring-sendgrid.war
+  services:
+    spring-sendgrid:
+      label: sendgrid-dev
+      provider: sendgrid
+      version: n/a
+      plan: free
