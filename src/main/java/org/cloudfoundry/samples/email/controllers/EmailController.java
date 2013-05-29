@@ -1,18 +1,20 @@
 package org.cloudfoundry.samples.email.controllers;
 
+import org.apache.log4j.Logger;
 import org.cloudfoundry.samples.email.domain.EmailMessage;
 import org.cloudfoundry.samples.email.domain.Status;
 import org.cloudfoundry.samples.email.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/email")
 public class EmailController {
+    private static Logger logger = Logger.getLogger("services");
 
     private EmailService emailService;
 
@@ -21,17 +23,11 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-    @RequestMapping
-    public String form(@ModelAttribute EmailMessage emailMessage) {
-        return "email";
-    }
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public Status send(@RequestBody EmailMessage emailMessage) {
+        logger.info("Sending e-mail message [" + emailMessage + "]");
 
-    @RequestMapping(value = "send", method = RequestMethod.POST)
-    public String send(EmailMessage emailMessage, Model model) {
-        Status status = emailService.send(emailMessage);
-
-        model.addAttribute(status);
-
-        return "email";
+        return emailService.send(emailMessage);
     }
 }

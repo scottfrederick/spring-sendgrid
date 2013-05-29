@@ -33,9 +33,9 @@ public class SMTPEmailService implements EmailService {
             transport.close();
         } catch (MessagingException e) {
             logger.error(e);
-            return new Status("An error occurred sending e-mail: " + e.getMessage());
+            return new Status(true, e.getMessage());
         }
-        return new Status("e-mail sent successfully");
+        return new Status();
     }
 
     private MimeMessage createMessage(EmailMessage msg, Session mailSession) throws MessagingException {

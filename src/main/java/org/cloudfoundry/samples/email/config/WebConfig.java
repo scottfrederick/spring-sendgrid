@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -16,16 +17,20 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
+        viewResolver.setPrefix("/WEB-INF/");
+        viewResolver.setSuffix(".html");
 
         return viewResolver;
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").
-                addResourceLocations("/WEB-INF/assets/");
+        registry.addResourceHandler("/assets/**").addResourceLocations("/assets/");
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("email");
     }
 
     @Override

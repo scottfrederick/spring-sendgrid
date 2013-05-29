@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="en" ng-app="SpringSendgrid">
+
+<link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="assets/css/app.css"/>
+
+<title>Spring SendGrid Sample</title>
+
+</head>
+
+<body>
+<div class="container" ng-controller="EmailController">
+    <div class="row-fluid">
+        <div id="header" class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <a class="brand" href="#">Spring SendGrid Sample</i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div id="alert" ng-show="status">
+            <div ng-class="{'alert': true, 'alert-success': !status.error, 'alert-error': status.error}">
+                <button type="button" class="close" ng-click="status=null"><i class="icon-remove-circle"></i></button>
+                <p>{{status.message}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <form id="emailMessage" class="form-horizontal" novalidate>
+            <fieldset>
+                <legend>E-mail</legend>
+
+                <div class="control-group">
+                    <label for="toName" class="control-label">To Name:</label>
+                    <div class="controls">
+                        <input id="toName" class="input-xxlarge" type="text" ng-required ng-model="message.toName"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="toAddress" class="control-label">To Address:</label>
+                    <div class="controls">
+                        <input id="toAddress" class="input-xxlarge" type="email" required ng-model="message.toAddress"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="fromName" class="control-label">From Name:</label>
+                    <div class="controls">
+                        <input id="fromName" class="input-xxlarge" type="text" required ng-model="message.fromName"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="fromAddress" class="control-label">From Address:</label>
+                    <div class="controls">
+                        <input id="fromAddress" class="input-xxlarge" type="email" required ng-model="message.fromAddress"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="subject" class="control-label">Subject:</label>
+                    <div class="controls">
+                        <input id="subject" class="input-xxlarge" type="text" required ng-model="message.subject"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="body" class="control-label">Message:</label>
+                    <div class="controls">
+                        <textarea id="body" rows="8" required ng-model="message.body"></textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <button id="submit" ng-click="send(message)" class="btn btn-primary btn-large">
+                        <i class="icon-envelope icon-white"></i> Send
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+</body>
+
+
+<script type="text/javascript" src="assets/js/angular.min.js"></script>
+<script type="text/javascript" src="assets/js/angular-resource.min.js"></script>
+
+<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript" src="assets/js/email.js"></script>
+</html>

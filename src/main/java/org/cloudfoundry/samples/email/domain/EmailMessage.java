@@ -1,5 +1,7 @@
 package org.cloudfoundry.samples.email.domain;
 
+import org.springframework.core.style.ToStringCreator;
+
 import java.io.Serializable;
 
 public class EmailMessage implements Serializable {
@@ -60,5 +62,17 @@ public class EmailMessage implements Serializable {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringCreator(this).
+                append(toName).
+                append(toAddress).
+                append(fromName).
+                append(fromAddress).
+                append(subject).
+                append(body).
+                toString();
     }
 }
