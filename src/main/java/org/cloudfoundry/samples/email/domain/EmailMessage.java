@@ -1,27 +1,17 @@
 package org.cloudfoundry.samples.email.domain;
 
-import org.springframework.core.style.ToStringCreator;
-
 import java.io.Serializable;
 
 public class EmailMessage implements Serializable {
-    private String toName;
     private String toAddress;
-    private String fromName;
+    private String ccAddress;
+    private String bccAddress;
     private String fromAddress;
     private String subject;
     private String body;
 
     public EmailMessage() {
         super();
-    }
-
-    public String getToName() {
-        return toName;
-    }
-
-    public void setToName(String toName) {
-        this.toName = toName;
     }
 
     public String getToAddress() {
@@ -32,12 +22,20 @@ public class EmailMessage implements Serializable {
         this.toAddress = toAddress;
     }
 
-    public String getFromName() {
-        return fromName;
+    public String getCcAddress() {
+        return ccAddress;
     }
 
-    public void setFromName(String fromName) {
-        this.fromName = fromName;
+    public void setCcAddress(String ccAddress) {
+        this.ccAddress = ccAddress;
+    }
+
+    public String getBccAddress() {
+        return bccAddress;
+    }
+
+    public void setBccAddress(String bccAddress) {
+        this.bccAddress = bccAddress;
     }
 
     public String getFromAddress() {
@@ -66,13 +64,15 @@ public class EmailMessage implements Serializable {
 
     @Override
     public String toString() {
-        return new ToStringCreator(this).
-                append(toName).
-                append(toAddress).
-                append(fromName).
-                append(fromAddress).
-                append(subject).
-                append(body).
-                toString();
+        return "EmailMessage{" +
+                "toAddress='" + toAddress + '\'' +
+                ", ccAddress='" + ccAddress + '\'' +
+                ", bccAddress='" + bccAddress + '\'' +
+                ", fromAddress='" + fromAddress + '\'' +
+                ", subject='" + subject + '\'' +
+                ", body='" + body + '\'' +
+                '}';
     }
 }
+
+

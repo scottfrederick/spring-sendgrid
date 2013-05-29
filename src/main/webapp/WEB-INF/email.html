@@ -33,30 +33,30 @@
                 <legend>E-mail</legend>
 
                 <div class="control-group">
-                    <label for="toName" class="control-label">To Name:</label>
+                    <label for="toAddress" class="control-label">To:</label>
                     <div class="controls">
-                        <input id="toName" class="input-xxlarge" type="text" ng-required ng-model="message.toName"/>
+                        <input id="toAddress" class="input-xxlarge" type="text" required ng-model="message.toAddress"/>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label for="toAddress" class="control-label">To Address:</label>
+                    <label for="ccAddress" class="control-label">CC:</label>
                     <div class="controls">
-                        <input id="toAddress" class="input-xxlarge" type="email" required ng-model="message.toAddress"/>
+                        <input id="ccAddress" class="input-xxlarge" type="text" ng-model="message.ccAddress"/>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label for="fromName" class="control-label">From Name:</label>
+                    <label for="bccAddress" class="control-label">BCC:</label>
                     <div class="controls">
-                        <input id="fromName" class="input-xxlarge" type="text" required ng-model="message.fromName"/>
+                        <input id="bccAddress" class="input-xxlarge" type="text" ng-model="message.bccAddress"/>
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label for="fromAddress" class="control-label">From Address:</label>
+                    <label for="fromAddress" class="control-label">From:</label>
                     <div class="controls">
-                        <input id="fromAddress" class="input-xxlarge" type="email" required ng-model="message.fromAddress"/>
+                        <input id="fromAddress" class="input-xxlarge" type="text" required ng-model="message.fromAddress"/>
                     </div>
                 </div>
 
@@ -77,6 +77,9 @@
                 <div class="control-group">
                     <button id="submit" ng-click="send(message)" class="btn btn-primary btn-large">
                         <i class="icon-envelope icon-white"></i> Send
+                    </button>
+                    <button id="reset" ng-click="reset()" class="btn btn-warning btn-large">
+                        <i class="icon-remove icon-white"></i> Reset
                     </button>
                 </div>
             </fieldset>

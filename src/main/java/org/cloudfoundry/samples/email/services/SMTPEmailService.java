@@ -5,6 +5,7 @@ import org.cloudfoundry.samples.email.domain.EmailMessage;
 import org.cloudfoundry.samples.email.domain.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -29,7 +30,7 @@ public class SMTPEmailService implements EmailService {
 
             Transport transport = mailSession.getTransport();
             transport.connect();
-            transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         } catch (MessagingException e) {
             logger.error(e);
@@ -41,17 +42,13 @@ public class SMTPEmailService implements EmailService {
     private MimeMessage createMessage(EmailMessage msg, Session mailSession) throws MessagingException {
         MimeMessage message = new MimeMessage(mailSession);
 
-        Multipart multipart = new MimeMultipart("alternative");
+        addBody(msg, message);
 
-        BodyPart part = new MimeBodyPart();
-        part.setText(msg.getBody());
+        addAddresses(msg, message);
 
-        multipart.addBodyPart(part);
-
-        message.addRecipient(Message.RecipientType.TO, createEmailAddress(msg.getToName(), msg.getToAddress()));
-        message.setFrom(createEmailAddress(msg.getFromName(), msg.getFromAddress()));
+        message.setFrom(createEmailAddress(msg.getFromAddress()));
         message.setSubject(msg.getSubject());
-        message.setContent(multipart);
+
         return message;
     }
 
@@ -76,8 +73,30 @@ public class SMTPEmailService implements EmailService {
         }
     }
 
-    private InternetAddress createEmailAddress(String realName, String address) throws AddressException {
-        return new InternetAddress(realName + "<" + address + ">");
+    private void addBody(EmailMessage msg, MimeMessage message) throws MessagingException {
+        Multipart multipart = new MimeMultipart("alternative");
+
+        BodyPart part = new MimeBodyPart();
+        part.setText(msg.getBody());
+
+        multipart.addBodyPart(part);
+        message.setContent(multipart);
+    }
+
+    private void addAddresses(EmailMessage msg, MimeMessage message) throws MessagingException {
+        message.addRecipient(Message.RecipientType.TO, createEmailAddress(msg.getToAddress()));
+
+        if (!StringUtils.isEmpty(msg.getCcAddress())) {
+            message.addRecipient(Message.RecipientType.CC, createEmailAddress(msg.getCcAddress()));
+        }
+
+        if (!StringUtils.isEmpty(msg.getBccAddress())) {
+            message.addRecipient(Message.RecipientType.BCC, createEmailAddress(msg.getBccAddress()));
+        }
+    }
+
+    private InternetAddress createEmailAddress(String address) throws AddressException {
+        return new InternetAddress(address);
     }
 }
 

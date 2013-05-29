@@ -23,4 +23,8 @@ function EmailController($scope, Email) {
         );
     };
 
+    $scope.reset = function () {
+        $scope.status = null;
+        $scope.message = {};
+    }
 }
