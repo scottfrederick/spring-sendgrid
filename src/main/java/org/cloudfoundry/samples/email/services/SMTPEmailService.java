@@ -11,6 +11,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
+import java.util.List;
 import java.util.Properties;
 
 @Service
@@ -44,7 +45,9 @@ public class SMTPEmailService implements EmailService {
 
         addBody(msg, message);
 
-        addAddresses(msg, message);
+        addAddresses(msg.getToAddresses(), message, Message.RecipientType.TO);
+        addAddresses(msg.getCcAddresses(), message, Message.RecipientType.CC);
+        addAddresses(msg.getBccAddresses(), message, Message.RecipientType.BCC);
 
         message.setFrom(createEmailAddress(msg.getFromAddress()));
         message.setSubject(msg.getSubject());
@@ -83,15 +86,11 @@ public class SMTPEmailService implements EmailService {
         message.setContent(multipart);
     }
 
-    private void addAddresses(EmailMessage msg, MimeMessage message) throws MessagingException {
-        message.addRecipient(Message.RecipientType.TO, createEmailAddress(msg.getToAddress()));
-
-        if (!StringUtils.isEmpty(msg.getCcAddress())) {
-            message.addRecipient(Message.RecipientType.CC, createEmailAddress(msg.getCcAddress()));
-        }
-
-        if (!StringUtils.isEmpty(msg.getBccAddress())) {
-            message.addRecipient(Message.RecipientType.BCC, createEmailAddress(msg.getBccAddress()));
+    private void addAddresses(List<String> addresses, MimeMessage message, Message.RecipientType type) throws MessagingException {
+        for (String address : addresses) {
+            if (!StringUtils.isEmpty(address)) {
+                message.addRecipient(type, createEmailAddress(address));
+            }
         }
     }
 

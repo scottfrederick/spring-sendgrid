@@ -1,11 +1,12 @@
 package org.cloudfoundry.samples.email.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class EmailMessage implements Serializable {
-    private String toAddress;
-    private String ccAddress;
-    private String bccAddress;
+    private List<String> toAddresses;
+    private List<String> ccAddresses;
+    private List<String> bccAddresses;
     private String fromAddress;
     private String subject;
     private String body;
@@ -14,28 +15,28 @@ public class EmailMessage implements Serializable {
         super();
     }
 
-    public String getToAddress() {
-        return toAddress;
+    public List<String> getToAddresses() {
+        return toAddresses;
     }
 
-    public void setToAddress(String toAddress) {
-        this.toAddress = toAddress;
+    public void setToAddresses(List<String> toAddresses) {
+        this.toAddresses = toAddresses;
     }
 
-    public String getCcAddress() {
-        return ccAddress;
+    public List<String> getCcAddresses() {
+        return ccAddresses;
     }
 
-    public void setCcAddress(String ccAddress) {
-        this.ccAddress = ccAddress;
+    public void setCcAddresses(List<String> ccAddresses) {
+        this.ccAddresses = ccAddresses;
     }
 
-    public String getBccAddress() {
-        return bccAddress;
+    public List<String> getBccAddresses() {
+        return bccAddresses;
     }
 
-    public void setBccAddress(String bccAddress) {
-        this.bccAddress = bccAddress;
+    public void setBccAddresses(List<String> bccAddresses) {
+        this.bccAddresses = bccAddresses;
     }
 
     public String getFromAddress() {
@@ -65,9 +66,9 @@ public class EmailMessage implements Serializable {
     @Override
     public String toString() {
         return "EmailMessage{" +
-                "toAddress='" + toAddress + '\'' +
-                ", ccAddress='" + ccAddress + '\'' +
-                ", bccAddress='" + bccAddress + '\'' +
+                "toAddresses='" + toAddresses + '\'' +
+                ", ccAddresses='" + ccAddresses + '\'' +
+                ", bccAddresses='" + bccAddresses + '\'' +
                 ", fromAddress='" + fromAddress + '\'' +
                 ", subject='" + subject + '\'' +
                 ", body='" + body + '\'' +

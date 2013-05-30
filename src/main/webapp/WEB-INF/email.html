@@ -35,21 +35,30 @@
                 <div class="control-group">
                     <label for="toAddress" class="control-label">To:</label>
                     <div class="controls">
-                        <input id="toAddress" class="input-xxlarge" type="text" required ng-model="message.toAddress"/>
+                        <!--<span ng-repeat="toAddress in message.toAddresses">-->
+                        <input id="toAddress" class="input-xxlarge" type="text" ng-model="message.toAddresses[0]"/>
+                        <!--</span>-->
+                        <!--<button class="btn btn-small" ng-click="addToAddress()"><i class="icon-plus"></i> Add</button>-->
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label for="ccAddress" class="control-label">CC:</label>
                     <div class="controls">
-                        <input id="ccAddress" class="input-xxlarge" type="text" ng-model="message.ccAddress"/>
+                        <!--<span ng-repeat="ccAddress in message.ccAddresses">-->
+                        <input id="ccAddress" class="input-xxlarge" type="text" ng-model="message.ccAddresses[0]"/>
+                        <!--</span>-->
+                        <!--<button class="btn btn-small" ng-click="addCcAddress()"><i class="icon-plus"></i> Add</button>-->
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label for="bccAddress" class="control-label">BCC:</label>
                     <div class="controls">
-                        <input id="bccAddress" class="input-xxlarge" type="text" ng-model="message.bccAddress"/>
+                        <!--<span ng-repeat="bccAddress in message.bccAddresses">-->
+                        <input id="bccAddress" class="input-xxlarge" type="text" ng-model="message.bccAddresses[0]"/>
+                        <!--</span>-->
+                        <!--<button class="btn btn-small" ng-click="addBccAddress()"><i class="icon-plus"></i> Add</button>-->
                     </div>
                 </div>
 

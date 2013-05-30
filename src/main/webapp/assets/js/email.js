@@ -7,8 +7,6 @@ angular.module('email', ['ngResource']).
 
 function EmailController($scope, Email) {
 
-    $scope.status = null;
-
     $scope.send = function (message) {
         Email.send({}, message,
             function (data) {
@@ -25,6 +23,27 @@ function EmailController($scope, Email) {
 
     $scope.reset = function () {
         $scope.status = null;
-        $scope.message = {};
+        $scope.message = {
+            toAddresses: [ "" ],
+            ccAddresses: [ "" ],
+            bccAddresses: [ "" ],
+            fromAddress: "",
+            subject: "",
+            body: ""
+        };
     }
+
+    $scope.addToAddress = function() {
+        this.message.toAddresses.push("");
+    }
+
+    $scope.addCcAddress = function() {
+        this.message.ccAddresses.push("");
+    }
+
+    $scope.addBccAddress = function() {
+        this.message.bccAddresses.push("");
+    }
+
+    $scope.reset();
 }
