@@ -38,7 +38,7 @@ public class CloudEmailCredentials extends PropertiesEmailCredentials {
         if (!StringUtils.isEmpty(host)) {
             return host;
         } else {
-            return credentialsOrEmptyString("host");
+            return credentialsOrEmptyString("hostname");
         }
     }
 
