@@ -7,7 +7,7 @@ applications:
   domain: cfapps.io
   path: build/libs/spring-sendgrid.war
   services:
-    spring-sendgrid:
+    sendgrid:
       label: sendgrid
       provider: sendgrid
       version: n/a
