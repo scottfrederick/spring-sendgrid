@@ -34,9 +34,6 @@ spring-sendgrid: running
 
 Using the provided URL in the urls field displayed, you can browse to the running application.
 
-You can verify the SendGrid credentials the app is using by navigating to
-`http://<app-url>/creds`.
-
 You can see what environment variables are available to the application (including the VCAP_ENVIRONMENT variable) by
 navigating to `http://<app-url>/env`.
 

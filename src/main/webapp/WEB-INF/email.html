@@ -33,42 +33,33 @@
                 <legend>E-mail</legend>
 
                 <div class="control-group">
-                    <label for="toAddress" class="control-label">To:</label>
+                    <label for="to" class="control-label">To:</label>
                     <div class="controls">
-                        <!--<span ng-repeat="toAddress in message.toAddresses">-->
-                        <input id="toAddress" class="input-xxlarge" type="text" ng-model="message.toAddresses[0]"
+                        <input id="to" class="input-xxlarge" type="text" ng-model="message.to[0]"
                                 placeholder="John Doe <john.doe@acme.com>"/>
-                        <!--</span>-->
-                        <!--<button class="btn btn-small" ng-click="addToAddress()"><i class="icon-plus"></i> Add</button>-->
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label for="ccAddress" class="control-label">CC:</label>
+                    <label for="cc" class="control-label">CC:</label>
                     <div class="controls">
-                        <!--<span ng-repeat="ccAddress in message.ccAddresses">-->
-                        <input id="ccAddress" class="input-xxlarge" type="text" ng-model="message.ccAddresses[0]"
+                        <input id="cc" class="input-xxlarge" type="text" ng-model="message.cc[0]"
                                placeholder="John Doe <john.doe@acme.com>"/>
-                        <!--</span>-->
-                        <!--<button class="btn btn-small" ng-click="addCcAddress()"><i class="icon-plus"></i> Add</button>-->
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label for="bccAddress" class="control-label">BCC:</label>
+                    <label for="bcc" class="control-label">BCC:</label>
                     <div class="controls">
-                        <!--<span ng-repeat="bccAddress in message.bccAddresses">-->
-                        <input id="bccAddress" class="input-xxlarge" type="text" ng-model="message.bccAddresses[0]"
+                        <input id="bcc" class="input-xxlarge" type="text" ng-model="message.bcc[0]"
                                placeholder="John Doe <john.doe@acme.com>"/>
-                        <!--</span>-->
-                        <!--<button class="btn btn-small" ng-click="addBccAddress()"><i class="icon-plus"></i> Add</button>-->
                     </div>
                 </div>
 
                 <div class="control-group">
-                    <label for="fromAddress" class="control-label">From:</label>
+                    <label for="from" class="control-label">From:</label>
                     <div class="controls">
-                        <input id="fromAddress" class="input-xxlarge" type="text" required ng-model="message.fromAddress"
+                        <input id="from" class="input-xxlarge" type="text" required ng-model="message.from"
                                placeholder="John Doe <john.doe@acme.com>"/>
                     </div>
                 </div>
@@ -81,9 +72,9 @@
                 </div>
 
                 <div class="control-group">
-                    <label for="body" class="control-label">Message:</label>
+                    <label for="text" class="control-label">Message:</label>
                     <div class="controls">
-                        <textarea id="body" rows="8" class="input-xxlarge" required ng-model="message.body"></textarea>
+                        <textarea id="text" rows="8" class="input-xxlarge" required ng-model="message.text"></textarea>
                     </div>
                 </div>
 

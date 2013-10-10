@@ -24,26 +24,13 @@ function EmailController($scope, Email) {
     $scope.reset = function () {
         $scope.status = null;
         $scope.message = {
-            toAddresses: [ "" ],
-            ccAddresses: [ "" ],
-            bccAddresses: [ "" ],
-            fromAddress: "",
+            to: [ "" ],
+            cc: [ "" ],
+            bcc: [ "" ],
+            from: "",
             subject: "",
-            body: ""
+            text: ""
         };
     }
-
-    $scope.addToAddress = function() {
-        this.message.toAddresses.push("");
-    }
-
-    $scope.addCcAddress = function() {
-        this.message.ccAddresses.push("");
-    }
-
-    $scope.addBccAddress = function() {
-        this.message.bccAddresses.push("");
-    }
-
     $scope.reset();
 }

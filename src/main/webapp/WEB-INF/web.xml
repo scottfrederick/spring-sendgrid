@@ -21,8 +21,8 @@
         <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
     </context-param>
     <context-param>
-        <param-name>contextConfigClasses</param-name>
-        <param-value>org.cloudfoundry.samples.email.config</param-value>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>org.cloudfoundry.samples.email.config.app</param-value>
     </context-param>
 
     <servlet>
@@ -34,7 +34,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>org.cloudfoundry.samples.email.config</param-value>
+            <param-value>org.cloudfoundry.samples.email.config.web</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

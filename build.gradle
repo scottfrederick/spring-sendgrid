@@ -1,6 +1,7 @@
 apply plugin: 'java'
 
 apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
 apply plugin: 'idea'
 
 apply plugin: 'tomcat'
@@ -38,17 +39,21 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    mavenRepo url: "http://maven.springframework.org/milestone"
+    mavenRepo url: "http://repo.spring.io/milestone"
+    mavenRepo url: "http://repo.spring.io/snapshot"
 }
 
 dependencies {
     // Spring
     compile "org.springframework:spring-context:${springVersion}"
+    compile "org.springframework:spring-context-support:${springVersion}"
     compile "org.springframework:spring-webmvc:${springVersion}"
-
-    // Cloud Foundry runtime
-    compile "org.cloudfoundry:cloudfoundry-runtime:0.8.4"
+    
+    // Spring Cloud
+    compile "org.springframework.cloud:spring-service-connector:${springCloudVersion}"
+    compile "org.springframework.cloud:cloudfoundry-connector:${springCloudVersion}"
 
     // Java Mail
     compile "javax.mail:javax.mail-api:1.5.0"
@@ -60,6 +65,7 @@ dependencies {
     // Logging
     compile 'org.slf4j:slf4j-api:1.7.2'
     compile 'org.slf4j:slf4j-log4j12:1.7.2'
+    compile 'log4j:log4j:1.2.17'
 
     // Servlet
     providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
