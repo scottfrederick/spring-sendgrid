@@ -41,8 +41,8 @@ buildscript {
 repositories {
     mavenLocal()
     mavenCentral()
-    mavenRepo url: "http://repo.spring.io/milestone"
-    mavenRepo url: "http://repo.spring.io/snapshot"
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "http://repo.spring.io/snapshot" }
 }
 
 dependencies {
@@ -83,7 +83,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '1.8'
 }
 
 war {
