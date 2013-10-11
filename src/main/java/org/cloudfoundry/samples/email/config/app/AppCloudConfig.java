@@ -9,8 +9,8 @@ import org.springframework.mail.MailSender;
 @Profile("cloud")
 @Configuration
 public class AppCloudConfig extends AbstractCloudConfig {
-	@Bean
-	public MailSender mailSender() {
-		return connectionFactory().service(MailSender.class);
-	}
+    @Bean
+    public MailSender mailSender() {
+        return connectionFactory().service(MailSender.class);
+    }
 }

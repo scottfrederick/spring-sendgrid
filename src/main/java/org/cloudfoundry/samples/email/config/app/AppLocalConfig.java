@@ -14,8 +14,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @Profile("!cloud")
 public class AppLocalConfig {
 
-	@Autowired Environment environment;
-	
+    @Autowired Environment environment;
+
     @Bean
     public MailSender mailSender() {
         JavaMailSenderImpl mailSenderImpl = new JavaMailSenderImpl();
@@ -23,7 +23,7 @@ public class AppLocalConfig {
         mailSenderImpl.setPort(587);
         mailSenderImpl.setUsername(environment.getProperty("smtp.user"));
         mailSenderImpl.setPassword(environment.getProperty("smtp.password"));
-        
+
         return mailSenderImpl;
     }
 }

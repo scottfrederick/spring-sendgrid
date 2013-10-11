@@ -17,9 +17,9 @@ public class SMTPEmailService implements EmailService {
 
     @Override
     public Status send(SimpleMailMessage msg) {
-    		System.out.println("Sending..." + msg + " " + mailSender);
+        logger.info("Sending... " + msg + " " + mailSender);
         try {
-        		mailSender.send(msg);
+            mailSender.send(msg);
         } catch (Exception e) {
             logger.error(e);
             return new Status(true, e.getMessage());
