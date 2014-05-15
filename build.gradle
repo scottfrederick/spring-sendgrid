@@ -52,8 +52,8 @@ dependencies {
     compile "org.springframework:spring-webmvc:${springVersion}"
     
     // Spring Cloud
-    compile "org.springframework.cloud:spring-service-connector:${springCloudVersion}"
-    compile "org.springframework.cloud:cloudfoundry-connector:${springCloudVersion}"
+    compile "org.springframework.cloud:spring-cloud-spring-service-connector:${springCloudVersion}"
+    compile "org.springframework.cloud:spring-cloud-cloudfoundry-connector:${springCloudVersion}"
 
     // Java Mail
     compile "javax.mail:javax.mail-api:1.5.0"
