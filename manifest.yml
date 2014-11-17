@@ -3,12 +3,6 @@ applications:
 - name: spring-sendgrid
   memory: 512M
   instances: 1
-  host: spring-sendgrid-${random-word}
-  domain: cfapps.io
   path: build/libs/spring-sendgrid.war
   services:
-    sendgrid:
-      label: sendgrid
-      provider: sendgrid
-      version: n/a
-      plan: free
+    - sendgrid
